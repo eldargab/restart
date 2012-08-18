@@ -1,0 +1,22 @@
+{
+  "name": "restart",
+  "version": "0.0.1",
+  "description": "Node restart on change thing",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eldargab/restart.git"
+  },
+  "keywords": [
+    "watch",
+    "restart"
+  ],
+  "bin": {
+    "restrt": "./bin/restrt"
+  },
+  "author": "Eldar Gabdullin <eldargab@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "watch": "~0.5.1",
+    "debug": "*"
+  }
+}

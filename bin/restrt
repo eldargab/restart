@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+var PATH = require('path')
+var restart = require('../index')
+
+try {
+    var config = process.argv[2], dir
+    if (config) {
+        if (fs.statSync(config).isDirectory()) {
+            dir = config
+            config = null
+        } else {
+            dir = PATH.dirname(config)
+            config = PATH.basename(config)
+        }
+    }
+    dir && process.chdir(dir)
+    config = config || 'restart.json'
+    var cfg = JSON.parse(fs.readFileSync(config, 'utf8'))
+    restart(cfg.start, cfg.build, cfg.watch || ['.'])
+} catch (e) {
+    console.error('\033[31m' + e + '\033[39m')
+    process.exit(1)
+}
